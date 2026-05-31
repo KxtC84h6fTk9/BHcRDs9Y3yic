@@ -75,7 +75,7 @@ def _wrap(payload: bytes, *, label: str = DEFAULT_LABEL, wrapper: bool = True) -
 
 
 def _extract_payload(text: str) -> bytes:
-    stripped = text.strip()
+    stripped = text.strip().lstrip("\ufeff")
     if stripped.startswith("-----BEGIN "):
         lines = stripped.splitlines()
         if len(lines) < 3 or not lines[-1].startswith("-----END "):
